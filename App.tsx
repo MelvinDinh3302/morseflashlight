@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button, StyleSheet, View, Text, TextInput, KeyboardAvoidingView, Platform } from "react-native";
 
 import { CameraView, useCameraPermissions } from "expo-camera";
+import { ProgressBar } from 'react-native-paper';
 
 const MORSE_CODE: { [key: string]: string } = {
   a: '.-',    b: '-...',  c: '-.-.',  d: '-..',
@@ -21,6 +22,9 @@ export default function App() {
   const [message, setMessage] = useState('');
   const [enableTorch, setEnableTorch] = useState(false);
   const [permission, requestPermission] = useCameraPermissions();
+  const [progress, setProgress] = useState(0); 
+  const [isSending, setIsSending] = useState(false);
+
 
   if (!permission) {
     return <View />;
@@ -29,7 +33,7 @@ export default function App() {
   if (!permission.granted) {
     return (
       <View style={styles.container}>
-        <Text style={styles.message}>We need your permission to use the flashlight.</Text>
+        <Text style={styles.message}>We need your permission to use the flashlight</Text>
         <Button onPress={requestPermission} title="grant permission" />
       </View>
     );
@@ -56,7 +60,13 @@ export default function App() {
   };
 
   const sendMorseCode = async () => {
+    if (isSending) return;
+
+    setIsSending(true);
+    setProgress(0);
     const morse = textToMorse(message);
+    const totalSymbols = morse.length;
+    let processedSymbols = 0;
 
     for (const symbol of morse) {
       if (symbol === '.') {
@@ -68,9 +78,12 @@ export default function App() {
       } else if (symbol === '/') {
         await new Promise((res) => setTimeout(res, 800));
       }
+      processedSymbols++;
+      setProgress(processedSymbols / totalSymbols);
     }
-  };
 
+    setIsSending(false);
+  };
 
   return (
     <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
@@ -82,7 +95,23 @@ export default function App() {
         value={message}
         onChangeText={setMessage}
       />
-      <Button title="Send Morse Code" onPress={sendMorseCode} />
+      <Button 
+        title={isSending ? "Sending..." : "Send Morse Code"} 
+        onPress={sendMorseCode} 
+        disabled={isSending || !message.trim()}
+      />
+      {isSending && (
+        <View style={styles.progressContainer}>
+          <ProgressBar 
+            progress={progress} 
+            color="#6200ee" 
+            style={styles.progressBar} 
+          />
+          <Text style={styles.progressText}>
+            {Math.round(progress * 100)}% complete
+          </Text>
+        </View>
+      )}
     </KeyboardAvoidingView>
   );
 }
@@ -92,7 +121,8 @@ const styles = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
     width: "100%",
-    height: "100%"
+    height: "100%",
+    padding: 20,
   },
   message: {
     textAlign: 'center',
@@ -106,6 +136,8 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 22,
     fontWeight: 'bold',
+    textAlign: 'center',
+    marginBottom: 20,
   },
   input: {
     borderWidth: 1,
@@ -115,5 +147,18 @@ const styles = StyleSheet.create({
     marginVertical: 20,
     width: '100%',
     fontSize: 18,
+  },
+  progressContainer: {
+    marginTop: 20,
+    alignItems: 'center',
+  },
+  progressBar: {
+    height: 10,
+    width: '100%',
+    marginBottom: 5,
+  },
+  progressText: {
+    fontSize: 14,
+    color: '#666',
   },
 })
