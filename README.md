@@ -1,14 +1,9 @@
 # Morse Flashlight App
 
-<div>
-  <img src="https://img.shields.io/badge/iOS-000000?style=for-the-badge&logo=apple&logoColor=white" alt="iOS" />
-  <img src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white" alt="Android" />
-</div>
+![iOS Badge](https://img.shields.io/badge/iOS-000000?style=for-the-badge&logo=apple&logoColor=white)
+![Android Badge](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)
 
-<div>
-  <strong>Convert text to Morse code signals using your phone's flashlight</strong><br/>
-  Maybe useful for emergency situations or learning Morse code
-</div>
+An app that convert text to Morse code signals using your phone's flashlight. Maybe useful for emergency situations.
 
 ## Key Features
 - Send morse code signals with device's flashlight
