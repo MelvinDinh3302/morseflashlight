@@ -3,7 +3,7 @@ import { Button, StyleSheet, View, Text, TextInput, KeyboardAvoidingView, Platfo
 
 import { CameraView, useCameraPermissions } from "expo-camera";
 import { ProgressBar } from 'react-native-paper';
-import { useAudioPlayer } from 'expo-audio';
+import { useAudioPlayer, setAudioModeAsync } from 'expo-audio';
 
 const MORSE_CODE: { [key: string]: string } = {
   a: '.-',    b: '-...',  c: '-.-.',  d: '-..',
@@ -28,6 +28,15 @@ export default function App() {
   const [progress, setProgress] = useState(0); 
   const [isSending, setIsSending] = useState(false);
   const [morseTranslation, setMorseTranslation] = useState('');
+
+  setAudioModeAsync({
+    allowsRecording: false,
+    interruptionMode: 'doNotMix',
+    interruptionModeAndroid: 'doNotMix',
+    playsInSilentMode: true,
+    shouldPlayInBackground: false,
+    shouldRouteThroughEarpiece: false,
+  });
   const player = useAudioPlayer(audioSource);
 
   if (!permission) {
