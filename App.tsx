@@ -3,6 +3,7 @@ import { Button, StyleSheet, View, Text, TextInput, KeyboardAvoidingView, Platfo
 
 import { CameraView, useCameraPermissions } from "expo-camera";
 import { ProgressBar } from 'react-native-paper';
+import { useAudioPlayer } from 'expo-audio';
 
 const MORSE_CODE: { [key: string]: string } = {
   a: '.-',    b: '-...',  c: '-.-.',  d: '-..',
@@ -18,13 +19,15 @@ const MORSE_CODE: { [key: string]: string } = {
   ' ': '/',
 };
 
+const audioSource = require('./assets/beep.mp3');
+
 export default function App() {
   const [message, setMessage] = useState('');
   const [enableTorch, setEnableTorch] = useState(false);
   const [permission, requestPermission] = useCameraPermissions();
   const [progress, setProgress] = useState(0); 
   const [isSending, setIsSending] = useState(false);
-
+  const player = useAudioPlayer(audioSource);
 
   if (!permission) {
     return <View />;
@@ -39,15 +42,15 @@ export default function App() {
     );
   }
 
-  const toggleFlashMode = (status: boolean) => {
-    setEnableTorch(status);
-  }
-
   const flashSignal = async (signal: string) => {
     const duration = signal === '.' ? 200 : 600;
-    await toggleFlashMode(true);
+    await player.seekTo(0.5);
+    await player.play();
+    await new Promise((res) => setTimeout(res, 100));
+    await setEnableTorch(true);
     await new Promise((res) => setTimeout(res, duration));
-    await toggleFlashMode(false);
+    await setEnableTorch(false);
+    await player.pause();
     await new Promise((res) => setTimeout(res, 200));
   };
 
