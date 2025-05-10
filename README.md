@@ -5,10 +5,10 @@ This is a React Native app built using Expo that converts user inputted text int
 ## Key Features
 - Send morse code signals with device's flashlight
 - beep sounds that complement the light signals
+- Display Morse code translation alongside text
 - Progress bar shows transmission status
 
 ## Upcoming Features
-- Display Morse code translation alongside text
 - Custom signal lengths
 
 ## Technologies
