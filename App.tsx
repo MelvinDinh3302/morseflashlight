@@ -135,16 +135,27 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     padding: 20,
+    backgroundColor: 'white',
   },
   message: {
     textAlign: 'center',
     paddingBottom: 10,
   },
-  camera: {
-    width: 300,
-    height: 300,
-    display: 'none',
-  },
+  camera: Platform.select({
+    ios: {
+      position: 'absolute',
+      top: -1000,
+      left: -1000,
+      width: 1,
+      height: 1,
+      opacity: 0,
+    },
+    default: {
+      width: 300,
+      height: 300,
+      display: 'none',
+},
+  }),
   title: {
     fontSize: 22,
     fontWeight: 'bold',
