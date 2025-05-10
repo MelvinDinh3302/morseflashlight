@@ -27,6 +27,7 @@ export default function App() {
   const [permission, requestPermission] = useCameraPermissions();
   const [progress, setProgress] = useState(0); 
   const [isSending, setIsSending] = useState(false);
+  const [morseTranslation, setMorseTranslation] = useState('');
   const player = useAudioPlayer(audioSource);
 
   if (!permission) {
@@ -60,6 +61,11 @@ export default function App() {
       .split('')
       .map(char => MORSE_CODE[char] || '')
       .join(' ');
+  };
+
+  const handleMessageChange = (text: string) => {
+    setMessage(text);
+    setMorseTranslation(textToMorse(text));
   };
 
   const sendMorseCode = async () => {
@@ -96,8 +102,11 @@ export default function App() {
         style={styles.input}
         placeholder="Enter a message"
         value={message}
-        onChangeText={setMessage}
+        onChangeText={handleMessageChange}
       />
+      <Text style={styles.morseText}>
+        {morseTranslation || 'Morse code will appear here'}
+      </Text>
       <Button 
         title={isSending ? "Sending..." : "Send Morse Code"} 
         onPress={sendMorseCode} 
@@ -163,5 +172,11 @@ const styles = StyleSheet.create({
   progressText: {
     fontSize: 14,
     color: '#666',
+  },
+  morseText: {
+    fontSize: 18,
+    color: '#666',
+    minHeight: 24,
+    marginBottom: 20,
   },
 })
