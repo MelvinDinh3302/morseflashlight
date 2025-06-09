@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, StyleSheet, View, Text, TextInput, KeyboardAvoidingView, Platform } from "react-native";
+import { Button, StyleSheet, View, Text, TextInput, KeyboardAvoidingView, Keyboard, TouchableWithoutFeedback, Platform } from "react-native";
 
 import { CameraView, useCameraPermissions } from "expo-camera";
 import { ProgressBar } from 'react-native-paper';
@@ -104,36 +104,38 @@ export default function App() {
   };
 
   return (
-    <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
-      <CameraView style={styles.camera} enableTorch={enableTorch} />
-      <Text style={styles.title}>Flashlight Morse Code</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Enter a message"
-        value={message}
-        onChangeText={handleMessageChange}
-      />
-      <Text style={styles.morseText}>
-        {morseTranslation || 'Morse code will appear here'}
-      </Text>
-      <Button 
-        title={isSending ? "Sending..." : "Send Morse Code"} 
-        onPress={sendMorseCode} 
-        disabled={isSending || !message.trim()}
-      />
-      {isSending && (
-        <View style={styles.progressContainer}>
-          <ProgressBar 
-            progress={progress} 
-            color="#6200ee" 
-            style={styles.progressBar} 
-          />
-          <Text style={styles.progressText}>
-            {Math.round(progress * 100)}% complete
-          </Text>
-        </View>
-      )}
-    </KeyboardAvoidingView>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+        <CameraView style={styles.camera} enableTorch={enableTorch} />
+        <Text style={styles.title}>Flashlight Morse Code</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Enter a message"
+          value={message}
+          onChangeText={handleMessageChange}
+        />
+        <Text style={styles.morseText}>
+          {morseTranslation || 'Morse code will appear here'}
+        </Text>
+        <Button 
+          title={isSending ? "Sending..." : "Send Morse Code"} 
+          onPress={sendMorseCode} 
+          disabled={isSending || !message.trim()}
+        />
+        {isSending && (
+          <View style={styles.progressContainer}>
+            <ProgressBar 
+              progress={progress} 
+              color="#6200ee" 
+              style={styles.progressBar} 
+            />
+            <Text style={styles.progressText}>
+              {Math.round(progress * 100)}% complete
+            </Text>
+          </View>
+        )}
+      </KeyboardAvoidingView>
+    </TouchableWithoutFeedback>
   );
 }
 
