@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "MorseFlashlight",
+    "name": "Morse Code Flashlight",
     "slug": "MorseFlashlight",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -24,6 +24,7 @@
       }
     },
     "android": {
+      "icon": "./assets/android-icon.png",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#050504"
@@ -44,7 +45,7 @@
         "com.android.vending.CHECK_LICENSE"
       ],
       "package": "com.melvindinh.MorseFlashlight",
-      "versionCode": 6
+      "versionCode": 7
     },
     "web": {
       "favicon": "./assets/favicon.png"
