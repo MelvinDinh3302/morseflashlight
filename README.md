@@ -1,16 +1,13 @@
 # Morse Flashlight App
 
-[![iOS Badge](https://img.shields.io/badge/iOS-000000?style=for-the-badge&logo=apple&logoColor=white)](https://www.apple.com/app-store/)
-[![Android Badge](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://play.google.com/store/)
+[![Expo](https://img.shields.io/badge/expo-1C1E24?style=for-the-badge&logo=expo&logoColor=#D04A37)](https://expo.dev/)
+[![React Native](https://img.shields.io/badge/react_native-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://reactnative.dev/)
 
-A cross-platform app that converts text to Morse code signals using your phone's flashlight. Maybe useful for emergency situations.
+A cross-platform app that converts text into Morse code using your phone’s flashlight. Handy in emergency situations or just for fun.
 
-## Closed Testing Available on Google Play
+## Download
 
-To try out the app, please follow these steps:
-
-1. **Join the [Testers Community Group](https://groups.google.com/g/testers-community)**. This is required to gain access to the beta version.  
-2. **Download the app from the [Google Play Store](https://play.google.com/store/apps/details?id=com.melvindinh.MorseFlashlight)** after joining the group.
+[![Get it on Google Play](https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png)](https://play.google.com/store/apps/details?id=com.melvindinh.MorseFlashlight)
 
 ## Key Features
 - Send Morse code signals with device's flashlight
