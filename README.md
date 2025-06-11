@@ -7,12 +7,12 @@ A cross-platform app that converts text into Morse code using your phone’s fla
 
 ## Download
 
-<a href="https://play.google.com/store/apps/details?id=com.melvindinh.MorseFlashlight">
-  <img src="badges/GetItOnGooglePlay_Badge_Web_color_English.png" height="60"/>
-</a>
-
 <a href="https://apps.apple.com/app/morse-signal-flashlight/id6747096157">
   <img src="badges/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg" height="70"/>
+</a>
+</br>
+<a href="https://play.google.com/store/apps/details?id=com.melvindinh.MorseFlashlight">
+  <img src="badges/GetItOnGooglePlay_Badge_Web_color_English.png" height="70"/>
 </a>
 
 ## Key Features
@@ -33,8 +33,8 @@ A cross-platform app that converts text into Morse code using your phone’s fla
 - TypeScript
 
 ## Known Issues
-- On Android, the first short audio beep may occasionally be missed
+- On some old Android devices, the first short audio beep may rarely be missed
 
-## Demonstration
+## Demo
 https://github.com/user-attachments/assets/7d61b782-c06c-46cf-a2c3-201e76ce0f31
 
