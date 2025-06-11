@@ -7,7 +7,13 @@ A cross-platform app that converts text into Morse code using your phone’s fla
 
 ## Download
 
-[![Get it on Google Play](https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png)](https://play.google.com/store/apps/details?id=com.melvindinh.MorseFlashlight)
+<a href="https://play.google.com/store/apps/details?id=com.melvindinh.MorseFlashlight">
+  <img src="badges/GetItOnGooglePlay_Badge_Web_color_English.png" height="60"/>
+</a>
+
+<a href="https://apps.apple.com/app/morse-signal-flashlight/id6747096157">
+  <img src="badges/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg" height="70"/>
+</a>
 
 ## Key Features
 - Send Morse code signals with device's flashlight
