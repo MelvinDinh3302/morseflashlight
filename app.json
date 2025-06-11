@@ -20,6 +20,7 @@
       "supportsTablet": false,
       "bundleIdentifier": "com.melvindinh.MorseFlashlight",
       "infoPlist": {
+        "NSCameraUsageDescription": "This app uses the camera to control the flashlight for Morse code signaling.",
         "ITSAppUsesNonExemptEncryption": false
       }
     },
