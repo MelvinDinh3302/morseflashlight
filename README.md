@@ -32,9 +32,6 @@ A cross-platform app that converts text into Morse code using your phone’s fla
 - Expo-audio
 - TypeScript
 
-## Known Issues
-- On some old Android devices, the first short audio beep may rarely be missed
-
 ## Demo
 https://github.com/user-attachments/assets/7d61b782-c06c-46cf-a2c3-201e76ce0f31
 
